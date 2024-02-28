@@ -35,5 +35,6 @@ router.route("/adminAddProducts").post(userMiddleware,adminMiddleware,AdminAddAl
 //Admin Add category Pr
 router.route("/adminAddCategory").post(userMiddleware,adminMiddleware,adminAddCategory);
 
+
 module.exports = router;
 

@@ -9,7 +9,7 @@ const user1 = require("../models/user-models");
 
 const getAllUsers =async(req,res,next)=>{
 
-     try {
+   try {
         
         const users= await user1.find({},{password:0});
 
