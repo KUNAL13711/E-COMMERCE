@@ -13,14 +13,17 @@ export const AdminLayout =()=>{
   <nav>
     <ul>
       <li>
-        <NavLink to="users"> <FaUser />Users</NavLink>
+        <NavLink to="users"> Users</NavLink>
         </li>
 
         <li >
-      <NavLink to="productsEditor"> <FaHome />Products Editor</NavLink>
+      <NavLink to="productsEditor"> Products Editor</NavLink>
         
         </li>
-            
+        <li >
+      <NavLink to="productsManagement"> Products management </NavLink>
+        
+        </li>
     </ul>
     </nav>
  </div>

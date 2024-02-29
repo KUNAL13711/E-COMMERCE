@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../store/auth";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const AdminUsers = () => {
   const [users, setUsers] = useState([]);
@@ -26,31 +26,28 @@ export const AdminUsers = () => {
     }
   };
 
-
-  // Delete users declaration
-
-  const deleteUser=async(id)=>{
-
-    try{
-   const response = await fetch(`http://localhost:3000/api/admin/users/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: authorizationToken,
-        },
-      });
+  const deleteUser = async (id) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/admin/users/delete/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: authorizationToken,
+          },
+        }
+      );
 
       const data = await response.json();
-      //console.log(`user after delete: ${data}`);
-        alert("User deleted successfully");
-        if(response.ok){
-          getAllUsersData();
-        }
-   }catch(error){
-   console.log(error);
-   }
+      alert("User deleted successfully");
+      if (response.ok) {
+        getAllUsersData();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
- // get user from database to admin panel
   useEffect(() => {
     getAllUsersData();
   }, []);
@@ -63,35 +60,37 @@ export const AdminUsers = () => {
         </div>
 
         <div>
-          <table>
+          <table className="w-full border-collapse border border-gray-300">
             <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Update</th>
-                <th>Delete</th>
+              <tr className="bg-gray-200">
+                <th className="py-2 px-4">Name</th>
+                <th className="py-2 px-4">Email</th>
+                <th className="py-2 px-4">Phone</th>
+                <th className="py-2 px-4">Update</th>
+                <th className="py-2 px-4">Delete</th>
               </tr>
             </thead>
             <tbody>
               {users.map((curUser, index) => (
-                <tr key={index}>
-                  <td>{curUser.username}</td>
-                  <td>{curUser.email}</td>
-                  <td>{curUser.phone}</td>
-
-
-
-                  <td>
-                    <Link to={`/admin/users/${curUser._id}/edit`}>Edit</Link>
-                    </td>
-
-
-
-
-                  <td>
-                   <button  onClick={()=>deleteUser(curUser._id)}>  </button>
+                <tr key={index} className="hover:bg-gray-100">
+                  <td className="py-2 px-4">{curUser.username}</td>
+                  <td className="py-2 px-4">{curUser.email}</td>
+                  <td className="py-2 px-4">{curUser.phone}</td>
+                  <td className="py-2 px-4">
+                    <Link
+                      to={`/admin/users/${curUser._id}/edit`}
+                      className="text-blue-500 hover:underline"
+                    >
+                      Edit
+                    </Link>
+                  </td>
+                  <td className="py-2 px-4">
+                    <button
+                      onClick={() => deleteUser(curUser._id)}
+                      className="text-red-500 hover:underline"
+                    >
                       Delete
+                    </button>
                   </td>
                 </tr>
               ))}

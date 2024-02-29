@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
 
 const  getServices= async()=>{
       try {
-        const response = await fetch("http://localhost:3000/api/data/service",{
+        const response = await fetch("http://localhost:3000/api/products/usersSeeAllProducts",{
            method:"get",
 
         });

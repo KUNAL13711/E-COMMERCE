@@ -17,7 +17,7 @@ export const AdminUpdate = () => {
   const singleDataById = async () => {
     try {
       const response = await fetch(`http://localhost:3000/api/admin/users/${params.id}`, {
-        method: "get",
+        method: "GET",
         headers: {
           Authorization: authorizationToken,
         },
@@ -71,14 +71,13 @@ export const AdminUpdate = () => {
 
   return (
     <div>
-      <section>
-        <main>
-          <div className="section-registration">
-            <h1>Update user Information</h1>
-            <br />
+      <section className="bg-gray-100 min-h-screen py-8">
+        <main className="max-w-md mx-auto bg-white p-8 rounded shadow-lg">
+          <div>
+            <h1 className="text-3xl font-semibold mb-4">Update User Information</h1>
             <form onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="username">Username</label>
+              <div className="mb-4">
+                <label htmlFor="username" className="block text-gray-700">Username</label>
                 <input
                   type="text"
                   name="username"
@@ -88,11 +87,12 @@ export const AdminUpdate = () => {
                   autoComplete="off"
                   value={data.username}
                   onChange={handleInput}
+                  className="w-full px-3 py-2 rounded border focus:outline-none focus:border-blue-500"
                 />
               </div>
 
-              <div>
-                <label htmlFor="email">Email address</label>
+              <div className="mb-4">
+                <label htmlFor="email" className="block text-gray-700">Email address</label>
                 <input
                   type="email"
                   name="email"
@@ -102,11 +102,12 @@ export const AdminUpdate = () => {
                   autoComplete="off"
                   value={data.email}
                   onChange={handleInput}
+                  className="w-full px-3 py-2 rounded border focus:outline-none focus:border-blue-500"
                 />
               </div>
 
-              <div>
-                <label htmlFor="phone">Phone Number</label>
+              <div className="mb-4">
+                <label htmlFor="phone" className="block text-gray-700">Phone Number</label>
                 <input
                   type="tel"
                   name="phone"
@@ -116,14 +117,14 @@ export const AdminUpdate = () => {
                   autoComplete="off"
                   value={data.phone}
                   onChange={handleInput}
+                  className="w-full px-3 py-2 rounded border focus:outline-none focus:border-blue-500"
                 />
               </div>
 
-              <button type="submit">Update</button>
+              <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-300">Update</button>
             </form>
           </div>
         </main>
-        <section></section>
       </section>
     </div>
   );
