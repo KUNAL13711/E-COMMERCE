@@ -34,6 +34,19 @@ router.route("/users/delete/:id").delete(userMiddleware,adminMiddleware,adminCon
 router.route("/adminAddProducts").post(userMiddleware,adminMiddleware,AdminAddAllProducts);
 //Admin Add category Pr
 router.route("/adminAddCategory").post(userMiddleware,adminMiddleware,adminAddCategory);
+//*-----------------------------------*
+// E-commerce site maintain by Admin //
+//*-----------------------------------*
+
+// get all products
+router.route("/getAllproducts").get(userMiddleware,adminMiddleware,adminController.getAllproducts);
+//update product data
+router.route("/getAllproducts/update/:id").patch(userMiddleware,adminMiddleware,adminController.updateProductData);
+//single product fetch
+router.route("/getAllproducts/productById/:id").get(userMiddleware,adminMiddleware,adminController.singleProductById);
+// delete product
+router.route("/getAllproducts/delete/:id").delete(userMiddleware,adminMiddleware,adminController.deleteProductById);
+
 
 
 module.exports = router;

@@ -3,7 +3,7 @@ const express= require("express");
 const app = express();
 const cors= require("cors");
 const authRoute=require("./router/auth-router");
-const UsersSeeProductsRoute=require("./router/users-see-all-products");
+const UsersProductsRoute=require("./router/users-see-all-products");
 const adminRoute= require("./router/admin-router");
 const connect_database = require("./utils/db");
 const errorMiddleware = require('./middlewares/error-middleware');
@@ -30,7 +30,7 @@ const PORT =3000;
 
 
 //users middleware
-app.use("/api/products",UsersSeeProductsRoute);
+app.use("/api/products",UsersProductsRoute);
 
 
 connect_database().then(()=>{
